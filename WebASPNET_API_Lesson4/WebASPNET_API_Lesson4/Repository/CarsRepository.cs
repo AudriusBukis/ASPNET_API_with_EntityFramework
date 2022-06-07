@@ -31,7 +31,7 @@ namespace WebASPNET_API_Lesson4.Repository
             var filteredCarsByColor = _context.Cars.Where(x => x.Color == color);
             return filteredCarsByColor;
         }
-        public IEnumerable<Car> AddNewCar(CarDto car)
+        public Car AddNewCar(CarDto car)
         {
             try
             {
@@ -40,15 +40,15 @@ namespace WebASPNET_API_Lesson4.Repository
                 _logger.LogInformation($"Mapper map CarDto to car Result\n{car}");
                 _context.Cars.Add(carToDb);
                 _context.SaveChanges();
-                return _context.Cars;
+                return carToDb;
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
-                return _context.Cars;
+                return default;
             }
         }
-        public IEnumerable<Car> UpdateCar(CarDto car, Guid id)
+        public Car UpdateCar(CarDto car, Guid id)
         {
 
             try
@@ -59,15 +59,15 @@ namespace WebASPNET_API_Lesson4.Repository
                 carToUpdate.Color = car.Color;
                 carToUpdate.Speed = car.Speed;
                 _context.SaveChanges();
-                return _context.Cars;
+                return carToUpdate;
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
-                return _context.Cars;
+                return default;
             }
         }
-        public IEnumerable<Car> DeleteCar(Guid id)
+        public Car DeleteCar(Guid id)
         {
             try
             {
@@ -75,12 +75,12 @@ namespace WebASPNET_API_Lesson4.Repository
                 var carToDelate = _context.Cars.Single(x => x.Id == id);
                 _context.Cars.Remove(carToDelate);
                 _context.SaveChanges();
-                return _context.Cars;
+                return carToDelate;
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
-                return _context.Cars;
+                return default;
             }
 
         }

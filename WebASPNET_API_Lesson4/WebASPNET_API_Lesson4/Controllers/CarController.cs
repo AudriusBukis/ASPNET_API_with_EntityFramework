@@ -27,17 +27,17 @@ namespace WebASPNET_API_Lesson4.Controllers
             return _carsRepository.GetCarsByColor(color);
         }
         [HttpPost("AddNewCar")]
-        public IEnumerable<Car> AddNewCar([FromBody] CarDto car)
+        public Car AddNewCar([FromBody] CarDto car)
         {
             return _carsRepository.AddNewCar(car);
         }
         [HttpPut("UpdateCar/{id}")]
-        public IEnumerable<Car> UpdateCar([FromBody] CarDto car, Guid id)
+        public Car UpdateCar([FromBody] CarDto car, Guid id)
         {
             return _carsRepository.UpdateCar(car, id);
         }
         [HttpDelete("DeleteCar/{id}")]
-        public IEnumerable<Car> DeleteCar([FromRoute] Guid id)
+        public Car DeleteCar([FromRoute] Guid id)
         {
             return _carsRepository.DeleteCar(id);
         }

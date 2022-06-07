@@ -8,8 +8,8 @@ namespace WebASPNET_API_Lesson4.Repository
     {
         public IEnumerable<Car> GetAllCars();
         public IEnumerable<Car> GetCarsByColor(string color);
-        public IEnumerable<Car> AddNewCar(CarDto car);
-        public IEnumerable<Car> UpdateCar(CarDto car, Guid id);
-        public IEnumerable<Car> DeleteCar(Guid id);
+        public Car AddNewCar(CarDto car);
+        public Car UpdateCar(CarDto car, Guid id);
+        public Car DeleteCar(Guid id);
     }
 }
